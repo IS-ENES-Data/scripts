@@ -1,0 +1,42 @@
+# List of RCMModelName values for CORDEX 
+# Do not change this file, its auto-generated based on the contents 
+# of the CORDEX coordination sheet at: 
+# https://github.com/IS-ENES/cordex/blob/master/Sheets/CORDEX_ESGF_coordination_issues.xlsx 
+# Timestamp: 2014-04-08 13:43:33
+# --------------------------------------------------------- 
+#  name                   institute      status         
+#---------------------------------------------------------- 
+AUTH-LHTEE-WRF321B       WRF321B        confirmed      
+AUTH-Met-WRF331A         WRF331A        confirmed      
+AWI-HIRHAM5              HIRHAM5        confirmed      
+BCCR-WRF331C             WRF331C        confirmed      
+CHMI-ALADIN52            ALADIN52       confirmed      
+CLMcom -CCLM4-8-17       CCLM4-8-17     confirmed      
+CLMcom-CCLM4-8-17        CCLM4-8-17     confirmed      
+CNRM-ALADIN52            ALADIN52       confirmed      
+CNRM-ARPEGE52            ARPEGE52       confirmed      
+CRP-GL-WRF331A           WRF331A        confirmed      
+CUNI-RegCM4-2            RegCM4-2       confirmed      
+DHMZ-RegCM4-2            RegCM4-2       confirmed      
+DMI-HIRHAM5              HIRHAM5        confirmed      
+HMS-ALADIN52             ALADIN52       confirmed      
+ICTP-RegCM4-3            RegCM4-3       confirmed      
+IDL-WRF331D              WRF331D        confirmed      
+IPSL-INERIS-WRF331F      WRF331F        confirmed      
+KNMI-RACMO21P            RACMO21P       confirmed      
+KNMI-RACMO22E            RACMO22E       confirmed      
+KNMI-RACMO22T            RACMO22T       confirmed      
+MIUB-WRF331A             WRF331A        confirmed      
+MOHC-HadGEM3-RA          HadGEM3-RA     confirmed      
+MOHC-HadRM3P             HadRM3P        confirmed      
+MPI-CSC-REMO2009         REMO2009       confirmed      
+NUIM-WRF341E             WRF341E        confirmed      
+SMHI-RCA4                RCA4           confirmed      
+SMHI-RCA4-SN             RCA4-SN        confirmed      
+SMHI-RCAO                RCAO           confirmed      
+SMHI-RCAO-SN             RCAO-SN        confirmed      
+UCAN-WRF331G             WRF331G        confirmed      
+UCAN-WRF350I             WRF350I        confirmed      
+UCLM-PROMES              PROMES         confirmed      
+UHOH-WRF331H             WRF331H        confirmed      
+UM-WRF331                WRF331         confirmed      
