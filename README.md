@@ -1,9 +1,9 @@
-IS-ENES CORDEX repo (temporary - may be renamed ..)
-====================
+IS-ENES CORDEX coordination repo 
+================================
 
-IS-ENES Cordex coordination support: 
+IS-ENES CORDEX coordination support: 
 * centrally maintained excel sheets
-* scripts to handle sheets programmatically 
+* scripts to handle coordination sheets programmatically 
 * automatically derived lists (basis for CVs)
 * ...
 
