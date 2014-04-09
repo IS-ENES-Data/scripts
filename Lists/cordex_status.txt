@@ -1,0 +1,224 @@
+# CORDEX Availability Matrix 
+# dynamically retrieved from ESGF at 
+# Timestamp: 2014-04-09 17:21:17
+
+# Domain                   Model         Driving Model 
+# --------------------------------------------------------
+#                   --------------------------------------
+AFR-44                   CCLM4-8-17     CNRM-CERFACS-CNRM-CM5
+AFR-44                   CCLM4-8-17     ECMWF-ERAINT   
+AFR-44                   CCLM4-8-17     ICHEC-EC-EARTH 
+AFR-44                   CCLM4-8-17     MOHC-HadGEM2-ES
+AFR-44                   CCLM4-8-17     MPI-M-MPI-ESM-LR
+#                   --------------------------------------
+AFR-44                   HIRHAM5        ECMWF-ERAINT   
+AFR-44                   HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+AFR-44                   HadRM3P        ECMWF-ERAINT   
+#                   --------------------------------------
+AFR-44                   RACMO22T       ECMWF-ERAINT   
+AFR-44                   RACMO22T       ICHEC-EC-EARTH 
+#                   --------------------------------------
+AFR-44                   RCA4           CCCma-CanESM2  
+AFR-44                   RCA4           CNRM-CERFACS-CNRM-CM5
+AFR-44                   RCA4           ECMWF-ERAINT   
+AFR-44                   RCA4           ICHEC-EC-EARTH 
+AFR-44                   RCA4           MIROC-MIROC5   
+AFR-44                   RCA4           MOHC-HadGEM2-ES
+AFR-44                   RCA4           MPI-M-MPI-ESM-LR
+AFR-44                   RCA4           NCC-NorESM1-M  
+AFR-44                   RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+AFR-44i                  HadRM3P        ECMWF-ERAINT   
+#                   --------------------------------------
+AFR-44i                  RACMO22T       ECMWF-ERAINT   
+AFR-44i                  RACMO22T       ICHEC-EC-EARTH 
+#                   --------------------------------------
+AFR-44i                  RCA4           CCCma-CanESM2  
+AFR-44i                  RCA4           CNRM-CERFACS-CNRM-CM5
+AFR-44i                  RCA4           ECMWF-ERAINT   
+AFR-44i                  RCA4           ICHEC-EC-EARTH 
+AFR-44i                  RCA4           MIROC-MIROC5   
+AFR-44i                  RCA4           MOHC-HadGEM2-ES
+AFR-44i                  RCA4           MPI-M-MPI-ESM-LR
+AFR-44i                  RCA4           NCC-NorESM1-M  
+AFR-44i                  RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+ANT-44                   RACMO21P       ECMWF-ERAINT   
+ANT-44                   RACMO21P       ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+ANT-44i                  RACMO21P       ECMWF-ERAINT   
+ANT-44i                  RACMO21P       ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+ARC-44                   RCA4           CCCma-CanESM2  
+ARC-44                   RCA4           ECMWF-ERAINT   
+ARC-44                   RCA4           ICHEC-EC-EARTH 
+ARC-44                   RCA4           MPI-M-MPI-ESM-LR
+ARC-44                   RCA4           NCC-NorESM1-M  
+#                   --------------------------------------
+ARC-44                   RCA4-SN        ECMWF-ERAINT   
+ARC-44                   RCA4-SN        ICHEC-EC-EARTH 
+ARC-44                   RCA4-SN        MPI-M-MPI-ESM-LR
+# --------------------------------------------------------
+#                   --------------------------------------
+ARC-44i                  RCA4           CCCma-CanESM2  
+ARC-44i                  RCA4           ECMWF-ERAINT   
+ARC-44i                  RCA4           ICHEC-EC-EARTH 
+ARC-44i                  RCA4           MPI-M-MPI-ESM-LR
+ARC-44i                  RCA4           NCC-NorESM1-M  
+#                   --------------------------------------
+ARC-44i                  RCA4-SN        ECMWF-ERAINT   
+ARC-44i                  RCA4-SN        ICHEC-EC-EARTH 
+ARC-44i                  RCA4-SN        MPI-M-MPI-ESM-LR
+# --------------------------------------------------------
+#                   --------------------------------------
+AUS-44                   HadRM3P        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+AUS-44i                  HadRM3P        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+EAS-44                   HadRM3P        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+EAS-44i                  HadRM3P        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+EUR-11                   HIRHAM5        ECMWF-ERAINT   
+EUR-11                   HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-11                   RACMO22E       ECMWF-ERAINT   
+EUR-11                   RACMO22E       ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-11                   RCA4           CNRM-CERFACS-CNRM-CM5
+EUR-11                   RCA4           ECMWF-ERAINT   
+EUR-11                   RCA4           ICHEC-EC-EARTH 
+EUR-11                   RCA4           IPSL-IPSL-CM5A-MR
+EUR-11                   RCA4           MOHC-HadGEM2-ES
+EUR-11                   RCA4           MPI-M-MPI-ESM-LR
+#                   --------------------------------------
+EUR-11                   REMO2009       MPI-M-MPI-ESM-LR
+#                   --------------------------------------
+EUR-11                   WRF331F        IPSL-IPSL-CM5A-MR
+# --------------------------------------------------------
+#                   --------------------------------------
+EUR-11i                  HIRHAM5        ECMWF-ERAINT   
+EUR-11i                  HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-11i                  RCA4           CNRM-CERFACS-CNRM-CM5
+EUR-11i                  RCA4           ECMWF-ERAINT   
+EUR-11i                  RCA4           ICHEC-EC-EARTH 
+EUR-11i                  RCA4           IPSL-IPSL-CM5A-MR
+EUR-11i                  RCA4           MOHC-HadGEM2-ES
+EUR-11i                  RCA4           MPI-M-MPI-ESM-LR
+#                   --------------------------------------
+EUR-11i                  REMO2009       MPI-M-MPI-ESM-LR
+# --------------------------------------------------------
+#                   --------------------------------------
+EUR-22                   WRF331G        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+EUR-44                   ALADIN52       ECMWF-ERAINT   
+#                   --------------------------------------
+EUR-44                   HIRHAM5        ECMWF-ERAINT   
+EUR-44                   HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-44                   HadRM3P        ECMWF-ERAINT   
+#                   --------------------------------------
+EUR-44                   RACMO22E       ECMWF-ERAINT   
+EUR-44                   RACMO22E       ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-44                   RCA4           CCCma-CanESM2  
+EUR-44                   RCA4           CNRM-CERFACS-CNRM-CM5
+EUR-44                   RCA4           ECMWF-ERAINT   
+EUR-44                   RCA4           ICHEC-EC-EARTH 
+EUR-44                   RCA4           IPSL-IPSL-CM5A-MR
+EUR-44                   RCA4           MIROC-MIROC5   
+EUR-44                   RCA4           MOHC-HadGEM2-ES
+EUR-44                   RCA4           MPI-M-MPI-ESM-LR
+EUR-44                   RCA4           NCC-NorESM1-M  
+EUR-44                   RCA4           NOAA-GFDL-GFDL-ESM2M
+#                   --------------------------------------
+EUR-44                   WRF331F        IPSL-IPSL-CM5A-MR
+#                   --------------------------------------
+EUR-44                   WRF331G        ECMWF-ERAINT   
+# --------------------------------------------------------
+#                   --------------------------------------
+EUR-44i                  ALADIN52       ECMWF-ERAINT   
+#                   --------------------------------------
+EUR-44i                  HIRHAM5        ECMWF-ERAINT   
+EUR-44i                  HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-44i                  HadRM3P        ECMWF-ERAINT   
+#                   --------------------------------------
+EUR-44i                  RACMO22E       ECMWF-ERAINT   
+EUR-44i                  RACMO22E       ICHEC-EC-EARTH 
+#                   --------------------------------------
+EUR-44i                  RCA4           CCCma-CanESM2  
+EUR-44i                  RCA4           CNRM-CERFACS-CNRM-CM5
+EUR-44i                  RCA4           ECMWF-ERAINT   
+EUR-44i                  RCA4           ICHEC-EC-EARTH 
+EUR-44i                  RCA4           IPSL-IPSL-CM5A-MR
+EUR-44i                  RCA4           MIROC-MIROC5   
+EUR-44i                  RCA4           MOHC-HadGEM2-ES
+EUR-44i                  RCA4           MPI-M-MPI-ESM-LR
+EUR-44i                  RCA4           NCC-NorESM1-M  
+EUR-44i                  RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+MNA-22                   RCA4           ECMWF-ERAINT   
+MNA-22                   RCA4           ICHEC-EC-EARTH 
+MNA-22                   RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+MNA-22i                  RCA4           ECMWF-ERAINT   
+MNA-22i                  RCA4           ICHEC-EC-EARTH 
+MNA-22i                  RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+MNA-44                   RCA4           CNRM-CERFACS-CNRM-CM5
+MNA-44                   RCA4           ECMWF-ERAINT   
+MNA-44                   RCA4           ICHEC-EC-EARTH 
+MNA-44                   RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+MNA-44i                  RCA4           CNRM-CERFACS-CNRM-CM5
+MNA-44i                  RCA4           ECMWF-ERAINT   
+MNA-44i                  RCA4           ICHEC-EC-EARTH 
+MNA-44i                  RCA4           NOAA-GFDL-GFDL-ESM2M
+# --------------------------------------------------------
+#                   --------------------------------------
+NAM-44                   HIRHAM5        ECMWF-ERAINT   
+NAM-44                   HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+NAM-44                   RCA4           CCCma-CanESM2  
+NAM-44                   RCA4           ECMWF-ERAINT   
+NAM-44                   RCA4           ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+NAM-44i                  HIRHAM5        ECMWF-ERAINT   
+NAM-44i                  HIRHAM5        ICHEC-EC-EARTH 
+#                   --------------------------------------
+NAM-44i                  RCA4           CCCma-CanESM2  
+NAM-44i                  RCA4           ECMWF-ERAINT   
+NAM-44i                  RCA4           ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+SAM-44                   RCA4           ECMWF-ERAINT   
+SAM-44                   RCA4           ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+SAM-44i                  RCA4           ECMWF-ERAINT   
+SAM-44i                  RCA4           ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+WAS-44                   RCA4           ECMWF-ERAINT   
+WAS-44                   RCA4           ICHEC-EC-EARTH 
+# --------------------------------------------------------
+#                   --------------------------------------
+WAS-44i                  RCA4           ECMWF-ERAINT   
+WAS-44i                  RCA4           ICHEC-EC-EARTH 
