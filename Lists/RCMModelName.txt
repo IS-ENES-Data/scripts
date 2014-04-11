@@ -2,7 +2,7 @@
 # Do not change this file, its auto-generated based on the contents 
 # of the CORDEX coordination sheet at: 
 # https://github.com/IS-ENES-Data/cordex-doc/blob/master/Sheets/CORDEX_ESGF_coordination_issues.xlsx 
-# Timestamp: 2014-04-10 14:38:14
+# Timestamp: 2014-04-11 09:43:40
 # -------------------------------------------------------------- 
 #  name                   institute      status         ToU            
 #--------------------------------------------------------------- 
@@ -19,8 +19,8 @@ CRP-GL-WRF331A           CRP-GL         confirmed      unrestricted
 CUNI-RegCM4-2            CUNI           confirmed      unknown        
 DHMZ-RegCM4-2            DHMZ           confirmed      non-commercial only
 DMI-HIRHAM5              DMI            confirmed      unrestricted   
-HMS-ALADIN52             HMS            confirmed      unknown        
-ICTP-RegCM4-3            ICTP           confirmed      unknown        
+HMS-ALADIN52             HMS            confirmed      non-commercial only
+ICTP-RegCM4-3            ICTP           confirmed      unrestricted   
 IDL-WRF331D              IDL            confirmed      unknown        
 IPSL-INERIS-WRF331F      IPSL-INERIS    confirmed      unknown        
 KNMI-RACMO21P            KNMI           confirmed      unrestricted   
@@ -35,7 +35,7 @@ SMHI-RCA4                SMHI           confirmed      unrestricted
 SMHI-RCA4-SN             SMHI           confirmed      unrestricted   
 SMHI-RCAO                SMHI           confirmed      unrestricted   
 SMHI-RCAO-SN             SMHI           confirmed      unrestricted   
-UCAN-WRF331G             UCAN           confirmed      unknown        
+UCAN-WRF331G             UCAN           confirmed      non-commercial only
 UCAN-WRF350I             UCAN           confirmed      unknown        
 UCLM-PROMES              UCLM           confirmed      unknown        
 UHOH-WRF331H             UHOH           confirmed      unknown        
