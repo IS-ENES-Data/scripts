@@ -15,7 +15,7 @@ Content overview:
 * Scripts:  Scripts for automatic and interactive information handling
 * Sheets:   Excel sheets - central management sheet: CORDEX_ESGF_coordination issues
 * Sheets/Submission_Sheets:  Data submisshion sheets to IS-ENES ESGF centers (currently only used by DKRZ)
-* Errata: IS-ENES errata information for CORDEX data
+
 
 
 Contribution to the content of this repository:
