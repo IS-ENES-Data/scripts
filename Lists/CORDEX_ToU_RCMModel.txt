@@ -2,7 +2,7 @@
 # Do not change this file, its auto-generated based on the contents 
 # of the CORDEX coordination sheet at: 
 # https://github.com/IS-ENES-Data/cordex-doc/blob/master/Sheets/CORDEX_ESGF_coordination_issues.xlsx 
-# Timestamp: 2014-04-15 16:32:56
+# Timestamp: 2014-04-15 16:55:20
 # -------------------------------------------------------------- 
 #  name                   institute      status         ToU            
 #--------------------------------------------------------------- 
@@ -11,7 +11,7 @@ AUTH-Met-WRF331A         AUTH-Met       confirmed      unknown
 AWI-HIRHAM5              AWI            confirmed      unknown        
 BCCR-WRF331C             BCCR           confirmed      unrestricted   
 CHMI-ALADIN52            CHMI           confirmed      unknown        
-CLMcom -CCLM4-8-17       CLMcom         confirmed      non-commercial only
+CLMcom-CCLM4-8-17       CLMcom         confirmed      non-commercial only
 CLMcom-CCLM4-8-17        CLMcom         confirmed      non-commercial only
 CNRM-ALADIN52            CNRM           confirmed      unrestricted   
 CNRM-ARPEGE52            CNRM           confirmed      unrestricted   
