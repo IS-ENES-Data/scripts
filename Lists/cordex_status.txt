@@ -1,6 +1,6 @@
 # CORDEX Availability Matrix 
 # dynamically retrieved from ESGF at 
-# Timestamp: 2014-04-15 16:55:31
+# Timestamp: 2014-04-17 15:07:17
 
 # Domain                   Model         Driving Model 
 # --------------------------------------------------------
