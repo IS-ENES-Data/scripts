@@ -2,7 +2,7 @@
 # Do not change this file, its auto-generated based on the contents 
 # of the CORDEX coordination sheet at: 
 # https://github.com/IS-ENES-Data/cordex-doc/blob/master/Sheets/CORDEX_ESGF_coordination_issues.xlsx 
-# Timestamp: 2014-06-17 11:52:31
+# Timestamp: 2014-06-17 12:26:24
 # -------------------------------------------------------------- 
 #  name                   institute      status         ToU            
 #--------------------------------------------------------------- 

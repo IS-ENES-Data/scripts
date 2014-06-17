@@ -115,7 +115,7 @@ table.altrowstable td {
         <th> Domain </th>
         <th> Model </th>
         <th> Driving Model </th>
-      % for a,b in my_dict.iteritems():
+      % for a,b in sorted(my_dict.iteritems()):
          <tr>
            <td> ----------------------------------------- </td>
            <td> ----------------------------------------- </td>
