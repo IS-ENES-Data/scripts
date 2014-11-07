@@ -106,9 +106,10 @@ table.altrowstable td {
     
     <body>
     
-    <h1> CORDEX domain avalability table </h1>
+    <h1> CORDEX - ESGF data availability overview </h1>
+    <h2> - sorted by domains - </h2> 
 
-    <p> Dynamically retrieved from ESGF at ${my_timestamp} </p>
+    <p> Information retrieved from ESGF index nodes at ${my_timestamp} </p>
     
     <table class="altrowstable" id="alternatecolor">
       <tr>

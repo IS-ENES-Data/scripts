@@ -61,11 +61,6 @@
             <td>confirmed</td>
           </tr>
           </tr>
-            <td>CSIRO-CCAM </td>
-            <td>CSIRO</td>
-            <td>confirmed</td>
-          </tr>
-          </tr>
             <td>NUIM-WRF341E </td>
             <td>NUIM</td>
             <td>confirmed</td>
@@ -106,8 +101,8 @@
             <td>confirmed</td>
           </tr>
           </tr>
-            <td>CLMcom-CCLM4-8-17 </td>
-            <td>CLMcom</td>
+            <td>CLMcom -CCLM4-8-17 </td>
+            <td>CLMcom </td>
             <td>confirmed</td>
           </tr>
           </tr>
@@ -133,6 +128,11 @@
           </tr>
             <td>BCCR-WRF331C </td>
             <td>BCCR</td>
+            <td>confirmed</td>
+          </tr>
+          </tr>
+            <td>CLMcom-CCLM4-8-17 </td>
+            <td>CLMcom</td>
             <td>confirmed</td>
           </tr>
           </tr>
@@ -173,11 +173,6 @@
           </tr>
             <td>UHOH-WRF331H </td>
             <td>UHOH</td>
-            <td>confirmed</td>
-          </tr>
-          </tr>
-            <td>IITM-RegCM4-1 </td>
-            <td>IITM</td>
             <td>confirmed</td>
           </tr>
           </tr>

@@ -55,7 +55,7 @@ class CV_Gen(object):
     def print_status(self,info_dict,outputfile='Lists/cordex_status.html'):
         
         cv_file = open(self.Settings['git_dir']+outputfile,"w")
-        timestamp = '# Timestamp: ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') +'\n'
+        timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'
         #cv_file.write('# CORDEX Availability Matrix \n')
         #cv_file.write('# dynamically retrieved from ESGF at \n')
         #cv_file.write(timestamp)
@@ -87,32 +87,34 @@ class CV_Gen(object):
     def print_cv(self,output_format='plain',outputfile='Lists/CORDEX_ToU_RCMModel.txt'):
     # ToDo: use json as a primary format and write different export functionalities 
     # to support csv, xml, rdf etc. 
-        print "schreibe:"
+        print "schreibe ORDEX_ToU_RCMModel.txt:"
         print outputfile
         cv_file = open(self.Settings['git_dir']+outputfile,"w")
         
         val = ['  name','institute','status','ToU']
         line = '#'+"{0:<25}".format(val[0]) + "{0:<15}".format(val[1]) + "{0:<15}".format(val[2]) + "{0:<15}".format(val[3])+ "\n"
         
-        timestamp = '# Timestamp: ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') +'\n'
+        timestamp = '# Timestamp:  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') +'\n'
         if output_format == "plain":
             
             my_heading1 = "# List of RCMModelName values for CORDEX \n"
             my_heading2 = "# Do not change this file, its auto-generated based on the contents \n"
             my_heading3 = "# of the CORDEX coordination sheet at: \n"
-            my_heading4 = "# https://github.com/IS-ENES-Data/cordex-doc/blob/master/Sheets/CORDEX_ESGF_coordination_issues.xlsx \n"
+            my_heading4 = "# https://github.com/IS-ENES-Data/cordex/raw/master/CORDEX_ESGF_coordination_issues.xlsx \n"
             my_heading5 = "# -------------------------------------------------------------- \n"
                     
             
             cv_file.write(my_heading1+my_heading2+my_heading3+my_heading4+timestamp+my_heading5)
             cv_file.write(line)
             cv_file.write("#--------------------------------------------------------------- \n")
+                
+              
             for key, val in sorted(self.cv_sheet.iteritems()): 
-                 if key != u'model_id': 
+                 if key != 'model_id' and not(pd.isnull(key)): 
                     line = "{0:<25}".format(val[0]) + "{0:<15}".format(val[4]) + "{0:<15}".format(val[2]) + "{0:<15}".format(val[3]) + "\n"
                     if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
-                        
                         cv_file.write(line)
+               
                         
              
         if output_format == "csv": 
@@ -166,19 +168,20 @@ class CV_Gen(object):
         
         cordex_coordination_issues = self.Settings['git_dir']+'Sheets/CORDEX_ESGF_coordination_issues.xlsx'
         
-        cv_sheet = pd.read_excel(cordex_coordination_issues,'ControlledVocabulary',index_col=None, na_values=['NA']) 
+        cv_sheet = pd.read_excel(cordex_coordination_issues,'ControlledVocabulary',skiprows=0, index_col=None, na_values=['NA']) 
         
         res_dict = {}
         
         for item, frame in cv_sheet.iteritems():
-            res_dict[frame[4]] = [frame[4], frame[3], frame[6],frame[5],frame[1]]
+            if not pd.isnull(frame[4]): 
+                   res_dict[frame[4]] = [frame[4], frame[3], frame[6],frame[5],frame[1]]
             
         return res_dict    
         
 
 
 if __name__ == "__main__":  
-    my_settings = {'git_dir':'/home/stephan/Repos/cordex-doc/'}
+    my_settings = {'git_dir':'/home/stephan/Repos/scripts/'}
     
     my_cv = CV_Gen(my_settings)
     

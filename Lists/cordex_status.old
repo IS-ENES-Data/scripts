@@ -60,10 +60,9 @@ table.altrowstable td {
     
     <body>
     
-    <h1> CORDEX - ESGF data availability overview </h1>
-    <h2> - sorted by domains - </h2> 
+    <h1> CORDEX domain avalability table </h1>
 
-    <p> Information retrieved from ESGF index nodes at #  2014-11-07 12:27:59 # 
+    <p> Dynamically retrieved from ESGF at # Timestamp: 2014-10-17 10:28:01
  </p>
     
     <table class="altrowstable" id="alternatecolor">
@@ -392,46 +391,6 @@ table.altrowstable td {
            <td> -------------------------------------------------- </td>
          </tr>
           <tr>
-            <td>CAM-44</td>
-            <td>RCA4</td>
-            <td>ECMWF-ERAINT</td>
-          </tr>
-          <tr>
-            <td>CAM-44</td>
-            <td>RCA4</td>
-            <td>MOHC-HadGEM2-ES</td>
-          </tr>
-          <tr>
-            <td>CAM-44</td>
-            <td>RCA4</td>
-            <td>MPI-M-MPI-ESM-LR</td>
-          </tr>
-         <tr>
-           <td> ----------------------------------------- </td>
-           <td> ----------------------------------------- </td>
-           <td> -------------------------------------------------- </td>
-         </tr>
-          <tr>
-            <td>CAM-44i</td>
-            <td>RCA4</td>
-            <td>ECMWF-ERAINT</td>
-          </tr>
-          <tr>
-            <td>CAM-44i</td>
-            <td>RCA4</td>
-            <td>MOHC-HadGEM2-ES</td>
-          </tr>
-          <tr>
-            <td>CAM-44i</td>
-            <td>RCA4</td>
-            <td>MPI-M-MPI-ESM-LR</td>
-          </tr>
-         <tr>
-           <td> ----------------------------------------- </td>
-           <td> ----------------------------------------- </td>
-           <td> -------------------------------------------------- </td>
-         </tr>
-          <tr>
             <td>EAS-44</td>
             <td>HadRM3P</td>
             <td>ECMWF-ERAINT</td>
@@ -523,6 +482,11 @@ table.altrowstable td {
           </tr>
           <tr>
             <td>EUR-11</td>
+            <td>REMO2009</td>
+            <td>MPI-M-MPI-ESM-LR</td>
+          </tr>
+          <tr>
+            <td>EUR-11</td>
             <td>WRF331F</td>
             <td>ECMWF-ERAINT</td>
           </tr>
@@ -574,6 +538,11 @@ table.altrowstable td {
           <tr>
             <td>EUR-11i</td>
             <td>RCA4</td>
+            <td>MPI-M-MPI-ESM-LR</td>
+          </tr>
+          <tr>
+            <td>EUR-11i</td>
+            <td>REMO2009</td>
             <td>MPI-M-MPI-ESM-LR</td>
           </tr>
          <tr>
