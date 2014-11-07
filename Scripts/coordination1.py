@@ -52,9 +52,9 @@ class CV_Gen(object):
     
         return driving_models
     
-    def print_status(self,info_dict,outputfile='Lists/cordex_status.html'):
+    def print_status(self,info_dict,outputfile='cordex_status.html'):
         
-        cv_file = open(self.Settings['git_dir']+outputfile,"w")
+        cv_file = open(self.Settings['output_dir']+outputfile,"w")
         timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'
         #cv_file.write('# CORDEX Availability Matrix \n')
         #cv_file.write('# dynamically retrieved from ESGF at \n')
@@ -84,12 +84,12 @@ class CV_Gen(object):
         
     
     
-    def print_cv(self,output_format='plain',outputfile='Lists/CORDEX_ToU_RCMModel.txt'):
+    def print_cv(self,output_format='plain',outputfile='CORDEX_ToU_RCMModel.txt'):
     # ToDo: use json as a primary format and write different export functionalities 
     # to support csv, xml, rdf etc. 
         print "schreibe ORDEX_ToU_RCMModel.txt:"
         print outputfile
-        cv_file = open(self.Settings['git_dir']+outputfile,"w")
+        cv_file = open(self.Settings['output_dir']+outputfile,"w")
         
         val = ['  name','institute','status','ToU']
         line = '#'+"{0:<25}".format(val[0]) + "{0:<15}".format(val[1]) + "{0:<15}".format(val[2]) + "{0:<15}".format(val[3])+ "\n"
@@ -166,7 +166,7 @@ class CV_Gen(object):
         
     def load_coordination_sheet(self):
         
-        cordex_coordination_issues = self.Settings['git_dir']+'Sheets/CORDEX_ESGF_coordination_issues.xlsx'
+        cordex_coordination_issues = self.Settings['cordex_dir']+'CORDEX_ESGF_coordination_issues.xlsx'
         
         cv_sheet = pd.read_excel(cordex_coordination_issues,'ControlledVocabulary',skiprows=0, index_col=None, na_values=['NA']) 
         
@@ -181,12 +181,12 @@ class CV_Gen(object):
 
 
 if __name__ == "__main__":  
-    my_settings = {'git_dir':'/home/stephan/Repos/scripts/'}
+    my_settings = {'git_dir':'/home/stephan/Repos/scripts/','cordex_dir':'/home/stephan/Repos/cordex/','output_dir':'/home/stephan/Repos/IS-ENES-Data.github.io/'}
     
     my_cv = CV_Gen(my_settings)
     
     my_cv.print_cv(output_format='plain')
-    my_cv.print_cv(output_format='html',outputfile='Lists/CORDEX_ToU_RCMModel.html')
+    my_cv.print_cv(output_format='html',outputfile='CORDEX_ToU_RCMModel.html')
     
     driving_models = my_cv.get_esgf_cordex_info()
     #print driving_models
