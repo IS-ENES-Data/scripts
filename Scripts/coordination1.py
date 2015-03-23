@@ -28,7 +28,8 @@ class CV_Gen(object):
     def __init__(self, my_settings):
         self.Settings = my_settings  
         self.cv_sheet = self.load_coordination_sheet()
-
+        # [institute_id,institution, RCM_name,model_id,ToU,Status,comments] = [cv_sheet[0],cv_sheet[1],cv_sheet[2],cv_sheet[3],cv_sheet[4],cv_sheet[5],cv_sheet[6)]
+       
     
     def get_esgf_cordex_info(self):
         
@@ -109,9 +110,14 @@ class CV_Gen(object):
             cv_file.write("#--------------------------------------------------------------- \n")
                 
               
-            for key, val in sorted(self.cv_sheet.iteritems()): 
-                 if key != 'model_id' and not(pd.isnull(key)): 
-                    line = "{0:<25}".format(val[0]) + "{0:<15}".format(val[4]) + "{0:<15}".format(val[2]) + "{0:<15}".format(val[3]) + "\n"
+            for key, val in sorted(self.cv_sheet.iteritems()):
+                
+                [institute_id_val,institution_val,RCM_name_val,model_id_val,ToU_val,Status_val,Commments_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                
+                print institute_id_val
+                print "--------/n"
+                if key != 'model_id' and not(pd.isnull(key)): 
+                    line = "{0:<25}".format(model_id_val) + "{0:<15}".format(institute_id_val) + "{0:<15}".format(Status_val) + "{0:<15}".format(ToU_val) + "\n"
                     if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
                         cv_file.write(line)
                
@@ -126,9 +132,13 @@ class CV_Gen(object):
             
             output_dict = {}
             for key, val in sorted(self.cv_sheet.iteritems()):
+                [institute_id_val,institution_val,RCM_name_val,model_id_val,ToU_val,Status_val,Commments_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
                 if key != u'model_id' and (isinstance(val[0],basestring) and isinstance(val[4],basestring) and isinstance(val[2],basestring)):
-                     output_dict[key] = [key,val[4],val[2],val[3]]
-            line = make_html_table(output_dict)
+                     output_dict[key] = [key,RCM_name_val,Status_val,ToU_val]
+            timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'         
+            print "llllllllllllllllllllllllllllllllllllllllllllllllll"
+            print output_dict
+            line = make_html_table(output_dict,timestamp)
             cv_file.write(line)
             
         cv_file.close()    
@@ -161,8 +171,12 @@ class CV_Gen(object):
                 if val.strip() in ["","model_id"]: 
                     valid = False         
                     
-        return valid           
-                
+        return valid  
+         
+    def filter_val(self,val):            
+        if pd.isnull(val): val = "not filled"
+        
+        return val
         
     def load_coordination_sheet(self):
         
@@ -174,8 +188,15 @@ class CV_Gen(object):
         
         for item, frame in cv_sheet.iteritems():
             if not pd.isnull(frame[4]): 
-                   res_dict[frame[4]] = [frame[4], frame[3], frame[6],frame[5],frame[1]]
-            
+                # frame[1]=institute_id
+                # frmae[2]=institution
+                # frame[3]=RCM name
+                # frmae[4]=model_id
+                # frame[5]=ToU
+                # frmae[6]=Status
+                # frame[7]=Comments
+                res_dict[frame[4]] = [self.filter_val(frame[1]),self.filter_val(frame[2]),self.filter_val(frame[3]),self.filter_val(frame[4]),self.filter_val(frame[5]),self.filter_val(frame[6]),self.filter_val(frame[7])] 
+        print res_dict    
         return res_dict    
         
 

@@ -8,27 +8,31 @@ Created on Thu Mar 20 16:51:27 2014
 from mako.template import Template
 
 
-def make_html_table(a_dict):
+def make_html_table(a_dict,timestamp):
     my_template =  '''
     <!DOCTYPE html>
     <html>
     <body>
     
-    <h1> CORDEX RCM table  </h1>
+    <h1> CORDEX Models overview  </h1>
+    <p> Information automatically generated based on the CORDEX coordination sheet at: </p>
+    <p> https://github.com/IS-ENES-Data/cordex/raw/master/CORDEX_ESGF_coordination_issues.xlsx </p>
+    <p> Timestamp: ${my_timestamp} </p>
     
     <table border="1">
       <tr>
-        <th>model_id</th>
-        <th>RCM name</th>
-        <th>confirmation status</th>
+        <th>name</th>
+        <th>institute</th>
+        <th>status</th>
+        <th>ToU</th>
       % for a,b in my_dict.iteritems():
           </tr>
-            <td>${b[0]} </td>
+            <td>${b[0]}</td>
             <td>${b[1]}</td>
             <td>${b[2]}</td>
+            <td>${b[3]}</td>
           </tr>
       % endfor
-        <tr>
       </tr>
     </table>
     
@@ -39,7 +43,7 @@ def make_html_table(a_dict):
     
     my_mako_template = Template(my_template)
     
-    result = my_mako_template.render(my_dict = a_dict)
+    result = my_mako_template.render(my_dict = a_dict,my_timestamp = timestamp)
     
     return result
     
