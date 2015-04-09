@@ -11,26 +11,39 @@ from mako.template import Template
 def make_html_table(a_dict,timestamp):
     my_template =  '''
     <!DOCTYPE html>
-    <html>
+       
+<html>
+
+</head>    
+    
+    
     <body>
     
     <h1> CORDEX Models overview  </h1>
-    <p> Information automatically generated based on the CORDEX coordination sheet at: </p>
-    <p> https://github.com/IS-ENES-Data/cordex/raw/master/CORDEX_ESGF_coordination_issues.xlsx </p>
+    <p> Information automatically generated based on ESGF CORDEX registration sheet. </p>
+    <p> To register CORDEX simulations please contact cordex-registration /at/ smhi.se  </p>
     <p> Timestamp: ${my_timestamp} </p>
     
     <table border="1">
       <tr>
-        <th>name</th>
-        <th>institute</th>
-        <th>status</th>
-        <th>ToU</th>
+        <th>Model Name</th>
+        <th>Institute</th>
+        <th>Institution Name</th>
+        <th>Terms of Use</th>
+        
       % for a,b in my_dict.iteritems():
-          </tr>
-            <td>${b[0]}</td>
-            <td>${b[1]}</td>
+         % if b[6] == "unknown":
+           <tr bgcolor=#FFC1C1>
+         % elif b[6] == "non-commercial":
+           <tr bgcolor=#FFCC99>
+         % else:
+           <tr bgcolor=#CCFFCC>
+         % endif
+
             <td>${b[2]}</td>
-            <td>${b[3]}</td>
+            <td>${b[1]}</td>
+            <td>${b[4]}</td>
+            <td>${b[6]}</td>
           </tr>
       % endfor
       </tr>

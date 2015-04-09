@@ -17,6 +17,8 @@
 # author: S. Kindermann
 # verson: 0.3
 #
+import collections
+import operator
 import datetime
 import time
 import pandas as pd
@@ -29,7 +31,11 @@ class CV_Gen(object):
         self.Settings = my_settings  
         self.cv_sheet = self.load_coordination_sheet()
         # [institute_id,institution, RCM_name,model_id,ToU,Status,comments] = [cv_sheet[0],cv_sheet[1],cv_sheet[2],cv_sheet[3],cv_sheet[4],cv_sheet[5],cv_sheet[6)]
-       
+        #print self.cv_sheet
+        
+        #for key,val in self.cv_sheet.iteritems():
+        #    for item in val:
+        #       print item
     
     def get_esgf_cordex_info(self):
         
@@ -53,7 +59,7 @@ class CV_Gen(object):
     
         return driving_models
     
-    def print_status(self,info_dict,outputfile='cordex_status.html'):
+    def print_status(self,info_dict,outputfile='CORDEX_status.html'):
         
         cv_file = open(self.Settings['output_dir']+outputfile,"w")
         timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'
@@ -85,64 +91,100 @@ class CV_Gen(object):
         
     
     
-    def print_cv(self,output_format='plain',outputfile='CORDEX_ToU_RCMModel.txt'):
+    def print_cv(self,output_format='plain',outputfile='CORDEX_RCMs_ToU.txt'):
     # ToDo: use json as a primary format and write different export functionalities 
     # to support csv, xml, rdf etc. 
-        print "schreibe ORDEX_ToU_RCMModel.txt:"
-        print outputfile
+        #print "schreibe ORDEX_ToU_RCMModel.txt:"
+        # print outputfile
         cv_file = open(self.Settings['output_dir']+outputfile,"w")
         
-        val = ['  name','institute','status','ToU']
-        line = '#'+"{0:<25}".format(val[0]) + "{0:<15}".format(val[1]) + "{0:<15}".format(val[2]) + "{0:<15}".format(val[3])+ "\n"
+        
         
         timestamp = '# Timestamp:  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') +'\n'
-        if output_format == "plain":
+        if output_format == "info":
             
-            my_heading1 = "# List of RCMModelName values for CORDEX \n"
+            val = [' model id','institute id','ToU','institution name']
+            line = '#'+"{0:<25}".format(val[0]) + "{0:<15}".format(val[1]) + "{0:<20}".format(val[2])  + "{0:<15}".format(val[3])+ "\n"
+            
+            my_heading1 = "# List of CORDEX RCMs (full version - including institution names)  \n"
             my_heading2 = "# Do not change this file, its auto-generated based on the contents \n"
-            my_heading3 = "# of the CORDEX coordination sheet at: \n"
-            my_heading4 = "# https://github.com/IS-ENES-Data/cordex/raw/master/CORDEX_ESGF_coordination_issues.xlsx \n"
+            my_heading3 = "# of the CORDEX RCM registration sheet managed at: \n"
+            my_heading4 = "# https://github.com/IS-ENES-Data/cordex/raw/master/CORDEX_ESGF_register.xlsx \n"
+            my_heading5 = "# ---------------------------------------------------------------------------------------------- \n"
+                    
+            
+            cv_file.write(my_heading1+my_heading2+my_heading3+my_heading4+timestamp+my_heading5)
+            cv_file.write(line)
+            cv_file.write("# ----------------------------------------------------------------------------------------------- \n")
+                
+              
+            for key, val in self.cv_sheet.iteritems():
+                
+                [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                
+                line = "{0:<25}".format(model_id_val) + "{0:<15}".format(institute_id_val)   + "{0:<20}".format(terms_of_use_val) + "{0:<15}".format(institution_val)  +"\n"
+                #    if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
+                cv_file.write(line)
+        
+        if output_format == "summary":
+         
+            val = [' model id','institute id','ToU']
+            line = '#'+"{0:<20}".format(val[0]) + "{0:<25}".format(val[1]) + "{0:<5}".format(val[2])  + "\n"
+            
+            my_heading1 = "# List of CORDEX RCMs (short, machine readable version)  \n"
+            my_heading2 = "# Do not change this file - it is auto-generated based on the contents \n"
+            my_heading3 = "# of the CORDEX RCM registration sheet  \n"
+            my_heading4 = "# To register CORDEX simulations please contact cordex-registration /at/ smhi.se \n"
             my_heading5 = "# -------------------------------------------------------------- \n"
                     
             
             cv_file.write(my_heading1+my_heading2+my_heading3+my_heading4+timestamp+my_heading5)
             cv_file.write(line)
-            cv_file.write("#--------------------------------------------------------------- \n")
+            cv_file.write("# --------------------------------------------------------------- \n")
                 
               
-            for key, val in sorted(self.cv_sheet.iteritems()):
+            for key, val in self.cv_sheet.iteritems():
                 
-                [institute_id_val,institution_val,RCM_name_val,model_id_val,ToU_val,Status_val,Commments_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
                 
-                print institute_id_val
-                print "--------/n"
-                if key != 'model_id' and not(pd.isnull(key)): 
-                    line = "{0:<25}".format(model_id_val) + "{0:<15}".format(institute_id_val) + "{0:<15}".format(Status_val) + "{0:<15}".format(ToU_val) + "\n"
-                    if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
-                        cv_file.write(line)
-               
-                        
-             
-        if output_format == "csv": 
-            for key, val in sorted(self.cv_sheet.iteritems()):
-                line = "{0:<25}".format(key+',') + "{0:<15}".format(val[4]+',') + "{0:<15}".format(val[2]) + '\n'+ "{0:<15}".format(val[3]) +"\n"
+                line = "{0:<25}".format(model_id_val) + "{0:<15}".format(institute_id_val)  + "{0:<15}".format(terms_of_use_val) +"\n"
+                #    if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
                 cv_file.write(line)
+                
+                
+        if output_format == "csv":
+         
+            
+            line = ' model_id, institute_id, terms_of_use \n' 
+            cv_file.write(line)
+                    
+            for key, val in self.cv_sheet.iteritems():
+                
+                [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                
+                line = model_id_val + ", " + institute_id_val + ", " + terms_of_use_val +"\n"
+               
+                cv_file.write(line)       
+         
+                        
                 
         if output_format =="html":
             
-            output_dict = {}
-            for key, val in sorted(self.cv_sheet.iteritems()):
-                [institute_id_val,institution_val,RCM_name_val,model_id_val,ToU_val,Status_val,Commments_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
-                if key != u'model_id' and (isinstance(val[0],basestring) and isinstance(val[4],basestring) and isinstance(val[2],basestring)):
-                     output_dict[key] = [key,RCM_name_val,Status_val,ToU_val]
+            #output_dict = {}
+            #for key, val in self.cv_sheet.iteritems():
+                #[institute_id_val,institution_val,RCM_name_val,model_id_val,ToU_val,Status_val,Commments_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                #if key != u'model_id' and (isinstance(val[0],basestring) and isinstance(val[4],basestring) and isinstance(val[2],basestring)):
+                #     output_dict[key] = [key,RCM_name_val,Status_val,ToU_val]
             timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'         
-            print "llllllllllllllllllllllllllllllllllllllllllllllllll"
-            print output_dict
-            line = make_html_table(output_dict,timestamp)
+            #print "llllllllllllllllllllllllllllllllllllllllllllllllll"
+            #print output_dict
+            #print self.cv_sheet
+            line = make_html_table(self.cv_sheet,timestamp)
+            #print line
             cv_file.write(line)
             
         cv_file.close()    
-        return
+        return line
     
     
     def check_sheet_ok(self,wb):
@@ -180,25 +222,46 @@ class CV_Gen(object):
         
     def load_coordination_sheet(self):
         
-        cordex_coordination_issues = self.Settings['cordex_dir']+'CORDEX_ESGF_coordination_issues.xlsx'
+        cordex_coordination_issues = self.Settings['cordex_dir']+'CORDEX_register.xlsx'
+        print cordex_coordination_issues
+
         
-        cv_sheet = pd.read_excel(cordex_coordination_issues,'ControlledVocabulary',skiprows=0, index_col=None, na_values=['NA']) 
+        cv_sheet = pd.read_excel(cordex_coordination_issues,'AllEntries',skiprows=0, index_col=None, na_values=['NA']) 
         
-        res_dict = {}
+        ires_dict = {}
         
-        for item, frame in cv_sheet.iteritems():
-            if not pd.isnull(frame[4]): 
-                # frame[1]=institute_id
-                # frmae[2]=institution
-                # frame[3]=RCM name
-                # frmae[4]=model_id
-                # frame[5]=ToU
-                # frmae[6]=Status
-                # frame[7]=Comments
-                res_dict[frame[4]] = [self.filter_val(frame[1]),self.filter_val(frame[2]),self.filter_val(frame[3]),self.filter_val(frame[4]),self.filter_val(frame[5]),self.filter_val(frame[6]),self.filter_val(frame[7])] 
-        print res_dict    
+        #print("The list of row indices")
+        #print(cv_sheet.index)
+        #print("The column headings")
+        #print(cv_sheet.columns)
+       
+        ix = 1
+        for item, frame in cv_sheet.iterrows():
+                
+           res=[]
+           for el in frame.iteritems():  
+               val = el[1]
+               res.append(val)
+               
+           ires_dict[ix]=res
+           ix = ix+1
+        
+        ures_dict = {}
+        for key, val in ires_dict.iteritems():
+            
+                 [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
+                 if not(model_id_val == 'model_id'): 
+                        ures_dict[model_id_val] = val
+       
+        res_dict = collections.OrderedDict()
+        
+        for key, val in sorted(ures_dict.iteritems()):
+            res_dict[key] = val
+    
+        
+        #print res_dict  
         return res_dict    
-        
+    
 
 
 if __name__ == "__main__":  
@@ -206,8 +269,11 @@ if __name__ == "__main__":
     
     my_cv = CV_Gen(my_settings)
     
-    my_cv.print_cv(output_format='plain')
-    my_cv.print_cv(output_format='html',outputfile='CORDEX_ToU_RCMModel.html')
+    my_cv.print_cv(output_format='summary')
+    my_cv.print_cv(output_format='info',outputfile="CORDEX_RCMs_info.txt")
+    # my_cv.print_cv(output_format='html',outputfile='CORDEX_RCMs_info.html')
+    my_cv.print_cv(output_format='csv',outputfile='CORDEX_RCMs_ToU.csv')
+    my_cv.print_cv(output_format='summary',outputfile='CORDEX_RCMs_ToU.txt')
     
     driving_models = my_cv.get_esgf_cordex_info()
     #print driving_models
