@@ -120,8 +120,8 @@ class CV_Gen(object):
               
             for key, val in self.cv_sheet.iteritems():
                 
-                [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0],val[1],val[2],val[3],val[4],val[5],val[6]]
-                
+                [RCM_name_val,institute_id_val,model_id_val,contact_val,institution_val,target_domains_val, terms_of_use_val] = [val[0].encode('utf8'),val[1].encode('utf8'),val[2].encode('utf8'),val[3].encode('utf8'),val[4].encode('utf8'),val[5].encode('utf8'),val[6].encode('utf8')]
+                print model_id_val,institute_id_val,terms_of_use_val,institution_val
                 line = "{0:<25}".format(model_id_val) + "{0:<15}".format(institute_id_val)   + "{0:<20}".format(terms_of_use_val) + "{0:<15}".format(institution_val)  +"\n"
                 #    if (isinstance(val[0],basestring) and isinstance(val[1],basestring) and isinstance(val[2],basestring)):
                 cv_file.write(line)
@@ -265,7 +265,7 @@ class CV_Gen(object):
 
 
 if __name__ == "__main__":  
-    my_settings = {'git_dir':'/home/stephan/Repos/scripts/','cordex_dir':'/home/stephan/Repos/cordex/','output_dir':'/home/stephan/Repos/IS-ENES-Data.github.io/'}
+    my_settings = {'git_dir':'/home/stephan/Repos/ENES-EUDAT/scripts/','cordex_dir':'/home/stephan/Repos/ENES-EUDAT/cordex/','output_dir':'/home/stephan/Repos/ENES-EUDAT/IS-ENES-Data.github.io/'}
     
     my_cv = CV_Gen(my_settings)
     
