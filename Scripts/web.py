@@ -3,9 +3,141 @@
 Created on Thu Mar 20 16:51:27 2014
 
 @author: stephan
+
+pupose:
+   json files --> dicts
+   dicts --> web tables
+
 """
 
+
 from mako.template import Template
+
+import commentjson
+#import json
+#from jsoncomment import JsonComment
+def jsonfile_to_dict(jsonfilename):
+    jsonfile = open(jsonfilename,"r")
+    json_string = jsonfile.read()
+    #parser = JsonComment(json)
+    jsonfile.close()
+    #json_dict = parser.loads(json_info)
+    json_dict = commentjson.loads(json_string)
+    return json_dict
+    
+    
+def generate_bias_table(a_dict): 
+   """
+   a_dict: dictionary containing json_dictionaries
+   structure: ["institution", "institute_id", "bc_method", "bc_method_id", "institute_id"-"bc_method_id", 
+              "terms_of_use", "CORDEX_domain", "reference", "package" ]
+   """
+   my_template =  '''
+    <!DOCTYPE html>
+       
+<html>
+
+</head>    
+    
+    
+    <body>
+    
+    <h1> bias correction vocabulary table </h1>
+    <p> Information automatically generated based on controled vocabulary </p>
+    <p> To register new vocabulary items please contact cordex-registration /at/ smhi.se  </p>
+    
+    
+    <table border="1">
+      <tr>
+        <th>institution</th>
+        <th>institute_id</th>
+        <th>bc_method</th>
+        <th>bc_method_id</th>
+        <th>acronym</th>
+        <th>terms_of_use</th>
+        <th>CORDEX_domain</th>
+        <th>package</th>
+       
+          
+          
+     % for a,b in my_dict.iteritems():
+        <tr>
+        <td>${b['institution']}</td>
+        <td>${b['institute_id']}</td>
+        <td>${b['bc_method']}</td>
+        <td>${b['bc_method_id']}</td>
+        <td>${b['institute_id']+'-'+b['bc_method_id']}</td>
+        <td>${b['terms_of_use']}</td>
+        <td>${b['CORDEX_domain']}</td>
+        <td>${b['package']}</td>
+        
+        </tr>
+     % endfor
+      </tr>
+    </table>
+    
+    
+    </body>
+    </html>
+    '''
+   
+   
+   my_mako_template = Template(my_template)
+   
+   result = my_mako_template.render(my_dict = a_dict)
+    
+   return result
+              
+
+def generate_bias_table_add(a_dict): 
+   """
+   a_dict: dictionary containing json_dictionaries
+   structure: ["institution", "institute_id", "bc_method", "bc_method_id", "institute_id"-"bc_method_id", 
+              "terms_of_use", "CORDEX_domain", "reference", "package" ]
+   """
+   my_template =  '''
+    <!DOCTYPE html>
+       
+<html>
+
+</head>    
+    
+    
+    <body>
+    
+    <h1> bias correction vocabulary table </h1>
+    <p> Information automatically generated based on controled vocabulary </p>
+    <p> To register new vocabulary items please contact cordex-registration /at/ smhi.se  </p>
+    
+    
+    <table border="1">
+      <tr>
+        <th>acronym</th>
+        <th>reference</th>
+          
+          
+     % for a,b in my_dict.iteritems():
+        <tr>
+        <td>${b['institute_id']+'-'+b['bc_method_id']}</td>
+        <td>${b['reference']}</td>
+        </tr>
+     % endfor
+      </tr>
+    </table>
+    
+    
+    </body>
+    </html>
+    '''
+   
+   
+   my_mako_template = Template(my_template)
+   
+   result = my_mako_template.render(my_dict = a_dict)
+    
+   return result
+
+
 
 
 def make_html_table(a_dict,timestamp):
