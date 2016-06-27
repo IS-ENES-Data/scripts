@@ -24,6 +24,8 @@ import time
 import pandas as pd
 from pyesgf.search import SearchConnection
 from web import make_html_table, make_domain_table
+from unidecode import unidecode
+
 
 class CV_Gen(object):
     
@@ -45,16 +47,22 @@ class CV_Gen(object):
         
         conn = SearchConnection('http://esgf-data.dkrz.de/esg-search',distrib=True)
         ctx = conn.new_context(project='CORDEX',replica=False)
+        #print ctx.hit_count
         
         domains = ctx.facet_counts['domain'].keys()
+        #print domains
 
         for key in domains:
             ctx2 = conn.new_context(project='CORDEX',domain=key,replica=False)
-            models[key] = ctx2.facet_counts['model'].keys()
+            #print ctx2.hit_count 
+            models[key] = ctx2.facet_counts['rcm_name'].keys()
+            #print models[key]
             driving_models[key]={}
             for thismodel in models[key]:
-                 ctx3 = conn.new_context(project='CORDEX',domain=key,model=thismodel,replica=False)
-            
+              
+                 ctx3 = conn.new_context(project='CORDEX',domain=key,rcm_name=thismodel,replica=False)
+                 #print key,thismodel
+                 #print ctx3.hit_count           
                  driving_models[key][thismodel] =  ctx3.facet_counts['driving_model'].keys()
     
         return driving_models
@@ -89,8 +97,6 @@ class CV_Gen(object):
 # domain / simulations for domain / what CMIP5 are downscaled by each RCM 
         
         
-    
-    
     def print_cv(self,output_format='plain',outputfile='CORDEX_RCMs_ToU.txt'):
     # ToDo: use json as a primary format and write different export functionalities 
     # to support csv, xml, rdf etc. 
@@ -176,12 +182,12 @@ class CV_Gen(object):
                 #if key != u'model_id' and (isinstance(val[0],basestring) and isinstance(val[4],basestring) and isinstance(val[2],basestring)):
                 #     output_dict[key] = [key,RCM_name_val,Status_val,ToU_val]
             timestamp = '#  ' + datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S') + ' # \n'         
-            #print "llllllllllllllllllllllllllllllllllllllllllllllllll"
+            print "llllllllllllllllllllllllllllllllllllllllllllllllll"
             #print output_dict
             #print self.cv_sheet
             line = make_html_table(self.cv_sheet,timestamp)
-            #print line
-            cv_file.write(line)
+            cv_file.write(line.encode('utf16'))
+            #cv_file.write(line)
             
         cv_file.close()    
         return line
@@ -271,7 +277,7 @@ if __name__ == "__main__":
     
     my_cv.print_cv(output_format='summary')
     my_cv.print_cv(output_format='info',outputfile="CORDEX_RCMs_info.txt")
-    # my_cv.print_cv(output_format='html',outputfile='CORDEX_RCMs_info.html')
+    my_cv.print_cv(output_format='html',outputfile='CORDEX_RCMs_info.html')
     my_cv.print_cv(output_format='csv',outputfile='CORDEX_RCMs_ToU.csv')
     my_cv.print_cv(output_format='summary',outputfile='CORDEX_RCMs_ToU.txt')
     
