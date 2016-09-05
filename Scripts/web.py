@@ -42,21 +42,21 @@ def generate_bias_table(a_dict):
     
     <body>
     
-    <h1> bias correction vocabulary table </h1>
+    <h1> CORDEX bias correction methods summary </h1>
     <p> Information automatically generated based on controled vocabulary </p>
-    <p> To register new vocabulary items please contact cordex-registration /at/ smhi.se  </p>
+    <p> To register new vocabulary items please contact cordex-registration /at/ cordex.org  </p>
     
     
     <table border="1">
       <tr>
-        <th>institution</th>
-        <th>institute_id</th>
-        <th>bc_method</th>
-        <th>bc_method_id</th>
-        <th>acronym</th>
-        <th>terms_of_use</th>
-        <th>CORDEX_domain</th>
-        <th>package</th>
+        <th>Institution</th>
+        <th>Institute_ID</th>
+        <th>Bias Adjustment</th>
+        <th>Bias Adjustment ID</th>
+        <th>Bias Adjustment Name</th>
+        <th>Terms_of_Use</th>
+        <th>CORDEX Domain</th>
+       
        
           
           
@@ -69,7 +69,7 @@ def generate_bias_table(a_dict):
         <td>${b['institute_id']+'-'+b['bc_method_id']}</td>
         <td>${b['terms_of_use']}</td>
         <td>${b['CORDEX_domain']}</td>
-        <td>${b['package']}</td>
+    
         
         </tr>
      % endfor
@@ -105,21 +105,22 @@ def generate_bias_table_add(a_dict):
     
     <body>
     
-    <h1> bias correction vocabulary table </h1>
+    <h1> CORDEX bias correction methods summary </h1>
     <p> Information automatically generated based on controled vocabulary </p>
-    <p> To register new vocabulary items please contact cordex-registration /at/ smhi.se  </p>
+    <p> To register new vocabulary items please contact cordex-registration /at/ cordex.org  </p>
     
     
     <table border="1">
       <tr>
-        <th>acronym</th>
-        <th>reference</th>
-          
+        <th>Bias Adjustment Name</th>
+        <th>Reference</th>
+        <th>Package</th> 
           
      % for a,b in my_dict.iteritems():
         <tr>
         <td>${b['institute_id']+'-'+b['bc_method_id']}</td>
         <td>${b['reference']}</td>
+        <td>${b['package']}</td>
         </tr>
      % endfor
       </tr>
@@ -151,9 +152,9 @@ def make_html_table(a_dict,timestamp):
     
     <body>
     
-    <h1> CORDEX Models overview  </h1>
+    <h1> CORDEX bias correction methonds: additional info </h1>
     <p> Information automatically generated based on ESGF CORDEX registration sheet. </p>
-    <p> To register CORDEX simulations please contact cordex-registration /at/ smhi.se  </p>
+    <p> To register CORDEX simulations please contact cordex-registration /at/ cordex.org  </p>
     <p> Timestamp: ${my_timestamp} </p>
     
     <table border="1">

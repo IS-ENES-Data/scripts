@@ -23,22 +23,31 @@ import datetime
 import time
 import pandas as pd
 from pyesgf.search import SearchConnection
-from web import make_html_table, make_domain_table
+from web import make_html_table, make_domain_table, generate_bias_table, generate_bias_table_add
 from unidecode import unidecode
-
+import commentjson
 
 class CV_Gen(object):
     
     def __init__(self, my_settings):
         self.Settings = my_settings  
         self.cv_sheet = self.load_coordination_sheet()
+      
         # [institute_id,institution, RCM_name,model_id,ToU,Status,comments] = [cv_sheet[0],cv_sheet[1],cv_sheet[2],cv_sheet[3],cv_sheet[4],cv_sheet[5],cv_sheet[6)]
         #print self.cv_sheet
         
         #for key,val in self.cv_sheet.iteritems():
         #    for item in val:
         #       print item
-    
+    def load_bias_sheet(self,jsonfilename):    
+        jsonfile = open(jsonfilename,"r")
+        json_string = jsonfile.read()
+        #parser = JsonComment(json)
+        jsonfile.close()
+        #json_dict = parser.loads(json_info)
+        json_dict = commentjson.loads(json_string)
+        return json_dict
+        
     def get_esgf_cordex_info(self):
         
         res_dict = {}
@@ -191,7 +200,19 @@ class CV_Gen(object):
             
         cv_file.close()    
         return line
-    
+        
+    def print_bias(self):
+         infile = self.Settings['cordex_dir']+'CORDEX_adjust_register.json'
+         bias_sum_file = open(self.Settings['output_dir']+'CORDEX_adjust_summary.html',"w")
+         bias_add_file = open(self.Settings['output_dir']+'CORDEX_adjust_add.html',"w")
+         bias_dict = self.load_bias_sheet(infile)
+         bias_sum = generate_bias_table(bias_dict)
+         bias_add = generate_bias_table_add(bias_dict)
+         bias_sum_file.write(bias_sum.encode('utf16'))
+         bias_add_file.write(bias_add.encode('utf16'))
+         bias_sum_file.close()
+         bias_add_file.close()
+         return True
     
     def check_sheet_ok(self,wb):
     ## deprecated   
@@ -293,7 +314,7 @@ if __name__ == "__main__":
     
     #my_cv.print_status(cordex_info)
     
-    
+    my_cv.print_bias()
     
     
 
