@@ -202,12 +202,13 @@ class CV_Gen(object):
         return line
         
     def print_bias(self):
+         timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
          infile = self.Settings['cordex_dir']+'CORDEX_adjust_register.json'
          bias_sum_file = open(self.Settings['output_dir']+'CORDEX_adjust_summary.html',"w")
          bias_add_file = open(self.Settings['output_dir']+'CORDEX_adjust_add.html',"w")
          bias_dict = self.load_bias_sheet(infile)
-         bias_sum = generate_bias_table(bias_dict)
-         bias_add = generate_bias_table_add(bias_dict)
+         bias_sum = generate_bias_table(bias_dict,timestamp)
+         bias_add = generate_bias_table_add(bias_dict,timestamp)
          bias_sum_file.write(bias_sum.encode('utf16'))
          bias_add_file.write(bias_add.encode('utf16'))
          bias_sum_file.close()

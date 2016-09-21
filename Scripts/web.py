@@ -26,7 +26,7 @@ def jsonfile_to_dict(jsonfilename):
     return json_dict
     
     
-def generate_bias_table(a_dict): 
+def generate_bias_table(a_dict,timestamp): 
    """
    a_dict: dictionary containing json_dictionaries
    structure: ["institution", "institute_id", "bc_method", "bc_method_id", "institute_id"-"bc_method_id", 
@@ -42,19 +42,21 @@ def generate_bias_table(a_dict):
     
     <body>
     
-    <h1> CORDEX bias correction methods summary </h1>
+    <h1> Summary of bias adjustment methods applied to CORDEX simulations </h1>
     <p> Information automatically generated based on controled vocabulary </p>
-    <p> To register new vocabulary items please contact cordex-registration /at/ cordex.org  </p>
+    <p> -- Timestamp: ${my_timestamp} </p>
+    <p> <a href="http://is-enes-data.github.io/CORDEX_adjust_add.html">(additional information on these bias adjustment methods)</a></p>
+    <p> To register new bias adjustment methods please contact cordex-esd-registration /at/ cordex.org  </p>
     
     
     <table border="1">
       <tr>
         <th>Institution</th>
-        <th>Institute_ID</th>
+        <th>Institute ID</th>
         <th>Bias Adjustment</th>
         <th>Bias Adjustment ID</th>
         <th>Bias Adjustment Name</th>
-        <th>Terms_of_Use</th>
+        <th>Terms_of Use</th>
         <th>CORDEX Domain</th>
        
        
@@ -84,12 +86,12 @@ def generate_bias_table(a_dict):
    
    my_mako_template = Template(my_template)
    
-   result = my_mako_template.render(my_dict = a_dict)
+   result = my_mako_template.render(my_dict = a_dict,my_timestamp=timestamp)
     
    return result
               
 
-def generate_bias_table_add(a_dict): 
+def generate_bias_table_add(a_dict,timestamp): 
    """
    a_dict: dictionary containing json_dictionaries
    structure: ["institution", "institute_id", "bc_method", "bc_method_id", "institute_id"-"bc_method_id", 
@@ -105,10 +107,11 @@ def generate_bias_table_add(a_dict):
     
     <body>
     
-    <h1> CORDEX bias correction methods summary </h1>
+    <h1> Summary of bias adjustment methods applied to CORDEX simulations: additional information  </h1>
     <p> Information automatically generated based on controled vocabulary </p>
-    <p> To register new vocabulary items please contact cordex-registration /at/ cordex.org  </p>
-    
+    <p> -- Timestamp: ${my_timestamp} </p>
+    <p> <a href="http://is-enes-data.github.io/CORDEX_adjust_summary.html">(Summary of bias adjustment methods)</a></p>
+    <p> To register new bias adjustment methods please contact cordex-esd-registration /at/ cordex.org  </p>
     
     <table border="1">
       <tr>
@@ -134,7 +137,7 @@ def generate_bias_table_add(a_dict):
    
    my_mako_template = Template(my_template)
    
-   result = my_mako_template.render(my_dict = a_dict)
+   result = my_mako_template.render(my_dict = a_dict, my_timestamp=timestamp)
     
    return result
 
@@ -152,10 +155,11 @@ def make_html_table(a_dict,timestamp):
     
     <body>
     
-    <h1> CORDEX bias correction methonds: additional info </h1>
+    <h1> CORDEX RCM list</h1>
     <p> Information automatically generated based on ESGF CORDEX registration sheet. </p>
+    <p> -- Timestamp: ${my_timestamp} </p>
     <p> To register CORDEX simulations please contact cordex-registration /at/ cordex.org  </p>
-    <p> Timestamp: ${my_timestamp} </p>
+   
     
     <table border="1">
       <tr>
