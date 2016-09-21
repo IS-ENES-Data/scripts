@@ -33,35 +33,41 @@ def generate_bias_table(a_dict,timestamp):
               "terms_of_use", "CORDEX_domain", "reference", "package" ]
    """
    my_template =  '''
-    <!DOCTYPE html>
-       
-<html>
+   
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <title>CORDEX bias adjustmen methods summary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
 
-</head>    
-    
-    
-    <body>
-    
-    <h1> Summary of bias adjustment methods applied to CORDEX simulations </h1>
+ <body>
+         
+ <div class="container">
+  <h2>Summary of bias adjustment methods applied to CORDEX simulations</h2>
     <p> Information automatically generated based on controled vocabulary </p>
     <p> -- Timestamp: ${my_timestamp} </p>
-    <p> <a href="http://is-enes-data.github.io/CORDEX_adjust_add.html">(additional information on these bias adjustment methods)</a></p>
-    <p> To register new bias adjustment methods please contact cordex-esd-registration /at/ cordex.org  </p>
+    <p> <a href="http://is-enes-data.github.io/CORDEX_adjust_add.html">(additional information on these bias adjustment methods: reference and software package)</a></p>
+    <p> To register new bias adjustment methods please contact <b> cordex-esd-registration /at/ cordex.org </b> </p>
     
-    
-    <table border="1">
-      <tr>
+    <table class="table table-striped table-bordered">
+      <thead> 
         <th>Institution</th>
         <th>Institute ID</th>
         <th>Bias Adjustment</th>
         <th>Bias Adjustment ID</th>
         <th>Bias Adjustment Name</th>
-        <th>Terms_of Use</th>
+        <th>Terms of Use</th>
         <th>CORDEX Domain</th>
+      </thead>     
        
        
           
-          
+     <tbody>     
      % for a,b in my_dict.iteritems():
         <tr>
         <td>${b['institution']}</td>
@@ -75,9 +81,9 @@ def generate_bias_table(a_dict,timestamp):
         
         </tr>
      % endfor
-      </tr>
+     </tbody>
     </table>
-    
+    </div>
     
     </body>
     </html>
@@ -98,27 +104,34 @@ def generate_bias_table_add(a_dict,timestamp):
               "terms_of_use", "CORDEX_domain", "reference", "package" ]
    """
    my_template =  '''
-    <!DOCTYPE html>
-       
-<html>
-
-</head>    
-    
-    
+   
+   
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <title>CORDEX bias adjustment methods: additional info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+   
     <body>
-    
-    <h1> Summary of bias adjustment methods applied to CORDEX simulations: additional information  </h1>
+  <div class="container">  
+    <h2> Bias adjustment methods applied to CORDEX simulations: additional information  </h2>
     <p> Information automatically generated based on controled vocabulary </p>
     <p> -- Timestamp: ${my_timestamp} </p>
     <p> <a href="http://is-enes-data.github.io/CORDEX_adjust_summary.html">(Summary of bias adjustment methods)</a></p>
     <p> To register new bias adjustment methods please contact cordex-esd-registration /at/ cordex.org  </p>
     
-    <table border="1">
-      <tr>
+    <table class="table table-striped table-bordered">
+      <thead> 
         <th>Bias Adjustment Name</th>
         <th>Reference</th>
         <th>Package</th> 
-          
+      </thead> 
+      <tbody>
      % for a,b in my_dict.iteritems():
         <tr>
         <td>${b['institute_id']+'-'+b['bc_method_id']}</td>
@@ -126,10 +139,9 @@ def generate_bias_table_add(a_dict,timestamp):
         <td>${b['package']}</td>
         </tr>
      % endfor
-      </tr>
+      </tbody
     </table>
-    
-    
+   </div> 
     </body>
     </html>
     '''

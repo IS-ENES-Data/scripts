@@ -209,8 +209,8 @@ class CV_Gen(object):
          bias_dict = self.load_bias_sheet(infile)
          bias_sum = generate_bias_table(bias_dict,timestamp)
          bias_add = generate_bias_table_add(bias_dict,timestamp)
-         bias_sum_file.write(bias_sum.encode('utf16'))
-         bias_add_file.write(bias_add.encode('utf16'))
+         bias_sum_file.write(bias_sum.encode('utf8'))
+         bias_add_file.write(bias_add.encode('utf8'))
          bias_sum_file.close()
          bias_add_file.close()
          return True
