@@ -25,6 +25,76 @@ def jsonfile_to_dict(jsonfilename):
     json_dict = commentjson.loads(json_string)
     return json_dict
     
+def generate_obs_table(a_dict,timestamp):
+    """
+     a_dict: dictionary containing json_dictionaries
+     structure: ["institution", "institute_id", "dataset", "dataset_id", "reference", "tou_bc_simulation" ]
+    """
+    my_template =  '''
+   
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <title>Calibration datasets used for bias adjustment of CORDEX simulations</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+
+ <body>
+         
+ <div class="container">
+  <h2>Calibration datasets used for bias adjustment of CORDEX simulations</h2>
+    <p> Information automatically generated based on controled vocabulary </p>
+    <p> -- Timestamp: ${my_timestamp} </p>
+    <p> To register new calibration datasets please contact <b> cordex-esd-registration /at/ cordex.org </b> </p>
+    
+    <table class="table table-striped table-bordered">
+      <thead> 
+       <tr>
+        <th>Institution</th>
+        <th>Institute ID</th>
+        <th>Dataset</th>
+        <th>Dataset ID</th>
+        <th>Reference</th>
+        <th>Terms of Use for bias adjusted CORDEX data</th>
+        </tr>
+      </thead>     
+       
+       
+          
+     <tbody>     
+     % for a,b in my_dict.iteritems():
+        <tr>
+        <td>${b['institution']}</td>
+        <td>${b['institute_id']}</td>
+        <td>${b['dataset']}</td>
+        <td>${b['dataset_id']}</td>
+        <td>${b['reference']}</td>
+        <td>${b['tou_bc_simulation']}</td>
+    
+        
+        </tr>
+     % endfor
+     </tbody>
+    </table>
+    </div>
+    
+    </body>
+    </html>
+    '''
+   
+   
+    my_mako_template = Template(my_template)
+   
+    result = my_mako_template.render(my_dict = a_dict,my_timestamp=timestamp)
+    
+    return result
+
+
+
     
 def generate_bias_table(a_dict,timestamp): 
    """
@@ -56,6 +126,7 @@ def generate_bias_table(a_dict,timestamp):
     
     <table class="table table-striped table-bordered">
       <thead> 
+       <tr>
         <th>Institution</th>
         <th>Institute ID</th>
         <th>Bias Adjustment</th>
@@ -63,6 +134,7 @@ def generate_bias_table(a_dict,timestamp):
         <th>Bias Adjustment Name</th>
         <th>Terms of Use</th>
         <th>CORDEX Domain</th>
+        </tr>
       </thead>     
        
        

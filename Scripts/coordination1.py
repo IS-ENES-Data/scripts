@@ -23,7 +23,7 @@ import datetime
 import time
 import pandas as pd
 from pyesgf.search import SearchConnection
-from web import make_html_table, make_domain_table, generate_bias_table, generate_bias_table_add
+from web import make_html_table, make_domain_table, generate_bias_table, generate_bias_table_add, generate_obs_table
 from unidecode import unidecode
 import commentjson
 
@@ -214,6 +214,16 @@ class CV_Gen(object):
          bias_sum_file.close()
          bias_add_file.close()
          return True
+         
+    def print_obs(self):
+        timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+        infile = self.Settings['cordex_dir']+'CORDEX_adjust_obs_register.json'
+        obs_file = open(self.Settings['output_dir']+'CORDEX_adjust_obs.html',"w")
+        obs_dict = self.load_bias_sheet(infile)
+        obs = generate_obs_table(obs_dict,timestamp)
+        obs_file.write(obs.encode('utf8'))
+        obs_file.close()
+        return True
     
     def check_sheet_ok(self,wb):
     ## deprecated   
@@ -316,6 +326,8 @@ if __name__ == "__main__":
     #my_cv.print_status(cordex_info)
     
     my_cv.print_bias()
+
+    my_cv.print_obs()
     
     
 
