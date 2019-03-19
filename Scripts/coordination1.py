@@ -24,7 +24,6 @@ import time
 import pandas as pd
 from pyesgf.search import SearchConnection
 from web import make_html_table, make_domain_table, generate_bias_table, generate_bias_table_add, generate_obs_table
-from unidecode import unidecode
 import commentjson
 
 class CV_Gen(object):
@@ -207,6 +206,8 @@ class CV_Gen(object):
          bias_sum_file = open(self.Settings['output_dir']+'CORDEX_adjust_summary.html',"w")
          bias_add_file = open(self.Settings['output_dir']+'CORDEX_adjust_add.html',"w")
          bias_dict = self.load_bias_sheet(infile)
+         print "-----------------------bias dict--------------------------"
+         print bias_dict
          bias_sum = generate_bias_table(bias_dict,timestamp)
          bias_add = generate_bias_table_add(bias_dict,timestamp)
          bias_sum_file.write(bias_sum.encode('utf8'))
@@ -303,7 +304,7 @@ class CV_Gen(object):
 
 
 if __name__ == "__main__":  
-    my_settings = {'git_dir':'/home/stephan/Repos/ENES-EUDAT/scripts/','cordex_dir':'/home/stephan/Repos/ENES-EUDAT/cordex/','output_dir':'/home/stephan/Repos/ENES-EUDAT/IS-ENES-Data.github.io/'}
+    my_settings = {'git_dir':'/media/sf_Repos/ENES-EUDAT/scripts/','cordex_dir':'/media/sf_Repos/ENES-EUDAT/cordex/','output_dir':'/media/sf_Repos/ENES-EUDAT/IS-ENES-Data.github.io/'}
     
     my_cv = CV_Gen(my_settings)
     
